@@ -1,0 +1,13 @@
+FROM node:alpine
+
+USER node
+
+RUN mkdir -p /home/nadav/courses/docker_and_kubernetes/new_images/visits-starter/fronten/app'
+WORKDIR '/home/nadav/courses/docker_and_kubernetes/new_images/visits-starter/frontend'
+
+COPY --chown=node:node ./package.json ./
+RUN npm install
+
+COPY --chown=node:node ./ ./
+
+CMD ["npm", "run", "start"]
